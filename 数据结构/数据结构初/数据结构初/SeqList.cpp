@@ -1,5 +1,3 @@
- #define _CRT_SECURE_NO_WARNINGS 1
-
 #include "seqList.h"
 
 void SeqLIstCheckCacpcity(SL* ps)
@@ -31,7 +29,6 @@ void SeqListInit(SL* ps)
 	ps->a = NULL;
 	ps->size = 0;
 	ps->cacpcity = 0;
-
 }
 
 //Î²²å
@@ -117,7 +114,7 @@ void SeqListInsert(SL* ps, int pos, SQDateType x)
 }
 
 
-//
+
 void SeqListErase(SL* ps, int pos)
 {
 	assert(pos < ps->size);
@@ -130,4 +127,31 @@ void SeqListErase(SL* ps, int pos)
 
 	ps->size--;
 }
+
+
+
+int SeqListFind(SL* ps, SQDateType x)
+{
+	for (int i = 0; i < ps->size; i++)
+	{
+		if (ps->a[i] == x)
+		{
+			return i;
+		}
+	}
+
+	return -1;
+
+}
+
+int SeqListModity(SL* ps, int pos, SQDateType x)
+{
+	assert(pos < ps->size);
+
+	ps->a[pos] = x;
+
+	return 0;
+}
+
+
 
