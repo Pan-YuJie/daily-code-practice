@@ -21,7 +21,29 @@ void TestSeqList1()
 	SeqListPushFront(&sl, 1);
 	SeqListPushFront(&sl, 1);
 
+
 	SeqListPrintf(&sl);
+	
+	SeqListPopBack(&sl);
+	SeqListPopBack(&sl);
+
+	SeqListPrintf(&sl);
+
+	SeqListPopFront(&sl);
+	SeqListPopFront(&sl);
+
+	SeqListPrintf(&sl);
+
+	SeqListInsert(&sl, 1, 20);
+	SeqListInsert(&sl, 2, 30);
+
+	SeqListPrintf(&sl);
+
+	SeqListErase(&sl, 2);
+
+	SeqListPrintf(&sl);
+
+
 }
 
 int main()

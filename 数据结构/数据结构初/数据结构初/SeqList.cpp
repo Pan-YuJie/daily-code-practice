@@ -73,12 +73,61 @@ void SeqListPushFront(SL* ps, SQDateType x)
 
 }
 
-void SeqListPopBack(SL* ps, SQDateType x)
+//尾删
+void SeqListPopBack(SL* ps)
 {
+	assert(ps->size > 0);//size不大于0就断言了
+
+	// ps->a[ps->size - 1] = 0; 可有可无
+	ps->size--;
+
+}	
+
+//头删
+void SeqListPopFront(SL* ps)
+{
+	assert(ps->size > 0);
+
+	int start = 1;
+	while (start < ps->size)
+	{
+		ps->a[start-1] = ps->a[start];
+		start++;
+	}
+	ps->size--;
 
 }
-void SeqListPopFront(SL* ps, SQDateType x)
-{
 
+//
+void SeqListInsert(SL* ps, int pos, SQDateType x)
+{
+	assert(pos< ps->size );
+	SeqLIstCheckCacpcity(ps);
+
+	int end = ps->a[ps->size - 1];
+	while (end <= pos)
+	{
+		ps->a[end + 1] = ps->a[end];
+		end--;
+
+	}
+
+	ps->a[pos] = x;
+	ps->size++;
+}
+
+
+//
+void SeqListErase(SL* ps, int pos)
+{
+	assert(pos < ps->size);
+	int start = pos+1;
+	while (start <ps->size )
+	{
+		ps->a[start-1] = ps->a[start];
+		start++;
+	}
+
+	ps->size--;
 }
 
