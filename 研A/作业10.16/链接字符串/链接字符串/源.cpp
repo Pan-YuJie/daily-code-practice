@@ -15,7 +15,7 @@ char* my_strcat(char* dest, const char* src)
 	}
 
 	//2.×·¼Ó
-	while (*dest++ = *src++)
+	while ( *dest++ = *src++ )
 	{
 		;
 	}

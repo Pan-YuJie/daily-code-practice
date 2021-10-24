@@ -3,6 +3,7 @@
 #include<string.h>
 
 #define MAX 100
+
 int main()
 {
 	char str1[MAX] ;
@@ -11,13 +12,19 @@ int main()
 
 	char* p = str1;
 	
-	int cnt = 1;
-
+	int cnt = 0;
+	int flag = 0;
 	while (*p)
 	{
-		if (*p == ' ')
+		if (*p == ' ')//遇到空格进入这个判断
 		{
-			cnt =cnt+1;
+			flag = 0;
+		}
+
+		else if(flag==0)//遇到下个字符才进入
+		{
+			flag = 1;
+			cnt++;
 		}
 
 		p++;

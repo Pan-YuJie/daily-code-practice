@@ -13,7 +13,7 @@ char* my_strcat(char* dest, const char* src)
 	{
 		dest++;
 	}
-
+	  
 	//2.×·¼Ó
 	while (*dest++ = *src++)
 	{
