@@ -104,9 +104,72 @@ void SListPopBack(SLTNode** pphead)
 }
 
   
+SLTNode* SListFind(SLTNode* phead,SLTDataType x)
+{
+    SLTNode* cur = phead;
+
+    while (cur != NULL)
+    {
+
+        if (cur->data == x)
+        {
+            return cur;
+        }
+
+        cur = cur->next;
+
+    }
+
+    return NULL;
+
+}
+
+void SListInsert(SLTNode** pphead, SLTNode* pos, SLTDataType x)
+{
+    //相当于头插
+    if (pos == *pphead)
+    {
+        SListPushFront(pphead,x);
+    }
+
+    else
+    {
+        SLTNode* prev = *pphead;
+        SLTNode* newnode = BuySListNode(x);
+        while (prev->next != pos)
+        {
+            prev = prev->next;
+        }
+
+        prev->next = newnode;
+        newnode->next = pos;
+    }
+}
 
 
+void SListErase(SLTNode** pphead, SLTNode* pos)
+{
+    if (pos == *pphead)
+    {
 
+        SListPopFront(pphead);
+
+    }
+
+    else
+    {
+        SLTNode* prev = *pphead;
+        while (prev->next != pos)
+        {
+            prev = prev->next;
+        }
+
+        prev->next = pos->next;
+        free(pos);
+
+    }
+
+}
 
 
 

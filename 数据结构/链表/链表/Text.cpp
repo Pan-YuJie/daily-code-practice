@@ -18,12 +18,25 @@ void TestSList1()
     SListPrintf(plist);
 
     SListPopBack(&plist);
-    SListPopBack(&plist);
-    SListPopBack(&plist);
+
     SListPrintf(plist);
 
+    //²éÕÒ+ÐÞ¸Ä
+    SLTNode* pos1 = SListFind(plist, 2);
+    if (pos1 != NULL)
+    {
+        SListInsert(&plist, pos1, 30);
+    }
 
+    SListPrintf(plist);
 
+    SLTNode* pos2 = SListFind(plist, 0);
+    if (pos2 != NULL)
+    {
+        SListErase(&plist, pos2);
+    }
+
+    SListPrintf(plist);
 
 }
 

@@ -12,17 +12,15 @@ typedef struct SListNode
 
 void SListPrintf(SLTNode* phead);
 
-void SListPushBack(SLTNode** phead, SLTDataType x);
+void SListPushBack(SLTNode** pphead, SLTDataType x);
 //void SListPushBack(SLTNode*& pphead, SLTDataType x)//C++ÒýÓÃ
-void SListPushFront(SLTNode** phead, SLTDataType x);
+void SListPushFront(SLTNode** pphead, SLTDataType x);
 
-void SListPopFront(SLTNode** phead);
-void SListPopBack(SLTNode** phead);
+void SListPopFront(SLTNode** pphead);
+void SListPopBack(SLTNode** pphead);
 
-void SListInsert(SLTNode** phead);
-void SListErase(SLTNode** phead);
+void SListInsert(SLTNode** pphead,SLTNode* pos,SLTDataType x);
+void SListErase(SLTNode** pphead, SLTNode* pos);
 
-
-
-
+SLTNode* SListFind(SLTNode* phead, SLTDataType x);
 SLTNode* BuySListNode(SLTDataType x);
