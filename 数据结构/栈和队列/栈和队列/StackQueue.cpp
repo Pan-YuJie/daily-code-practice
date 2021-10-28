@@ -75,7 +75,7 @@ void StackPop(ST* ps)
 
 }
  
-
+//返回栈顶元素
 STDataType StackTop(ST* ps)
 {
     assert(ps);
@@ -93,11 +93,13 @@ int StackSize(ST* ps)
     return ps->top;
 }
 
-
+//判空
 int StackEmpty(ST* ps)
 {
     assert(ps);
 
+
+    //等于0为真，不等于0为假
     return ps->top == 0;
 
 }  
