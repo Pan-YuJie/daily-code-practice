@@ -1,0 +1,25 @@
+﻿  main.c
+D:\桌面\学生管理系统\学生管理系统\function.c(81,10): warning C4101: “xb”: 未引用的局部变量
+D:\桌面\学生管理系统\学生管理系统\extra.c(72,32): warning C4101: “i”: 未引用的局部变量
+main.obj : error LNK2005: _AnalysisLink 已经在 function.obj 中定义
+main.obj : error LNK2005: _DeleteNode 已经在 function.obj 中定义
+main.obj : error LNK2005: _EditNode 已经在 function.obj 中定义
+main.obj : error LNK2005: _InsertNode 已经在 function.obj 中定义
+main.obj : error LNK2005: _OutputLink_1 已经在 function.obj 中定义
+main.obj : error LNK2005: _OutputLink_2 已经在 function.obj 中定义
+main.obj : error LNK2005: _OutputLink_only10 已经在 extra.obj 中定义
+main.obj : error LNK2005: _QueryLink 已经在 function.obj 中定义
+main.obj : error LNK2005: _QueryNode 已经在 function.obj 中定义
+main.obj : error LNK2005: _RankLink 已经在 function.obj 中定义
+main.obj : error LNK2005: _ReadFromFile 已经在 function.obj 中定义
+main.obj : error LNK2005: _SaveToFile 已经在 function.obj 中定义
+main.obj : error LNK2005: _SortLink 已经在 function.obj 中定义
+main.obj : error LNK2005: _count 已经在 extra.obj 中定义
+main.obj : error LNK2005: _dj_change 已经在 extra.obj 中定义
+main.obj : error LNK2005: _exchange 已经在 function.obj 中定义
+main.obj : error LNK2005: _menu 已经在 extra.obj 中定义
+main.obj : error LNK2005: _start_menu 已经在 extra.obj 中定义
+main.obj : error LNK2005: _xh_define 已经在 extra.obj 中定义
+main.obj : error LNK2005: _Max_xh 已经在 function.obj 中定义
+main.obj : error LNK2005: _dj 已经在 function.obj 中定义
+D:\桌面\学生管理系统\Debug\学生管理系统.exe : fatal error LNK1169: 找到一个或多个多重定义的符号
