@@ -1,0 +1,275 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define N 35
+
+struct stud_type
+    {
+     char name[20];
+     char num[11];
+     char age[3];
+     char sex[2];
+     char C[3];         /*C语言成绩*/
+     char M[3];         /*计算机网络成绩*/
+     char E[3];         /*英语成绩*/
+     char S[3];         /*LINUX成绩*/
+    }student[N];
+   
+  FILE *fp; /*定义输入文件指针*/
+  FILE *fp_sert; /*定义排序文件指针*/
+  FILE *fp_output;   /*定义查找文件指针*/
+  static int  n=0;
+
+  void Menu();
+  void Input(); /*输入信息*/
+  void Putout(); /*输出信息*/
+  void Query(); /*查询信息*/
+  void Sort(); /*排序*/
+int main()
+{ 
+  printf("\n");
+  printf("       <07网络学生信息管理系统>\n");
+  printf("\n");
+  Menu();
+  Input(); /*输入信息*/
+  Putout(); /*输出信息*/
+  Query(); /*查询信息*/
+  Sort(); /*排序*/
+  Menu();   /*浮动菜单*/
+  return 0;
+}
+
+/***************菜单**************/
+void Menu()
+{
+    char choice_choose;
+    printf("\n");
+    printf("________________________________________\n");
+    printf("               1.输入            \n");
+    printf("               2.查询            \n");
+    printf("               3.排序             \n");
+    printf("               4.输出             \n");
+    printf("               5.退出             \n");
+    printf("________________________________________\n");
+    printf("\n请选择菜单:  ");
+    choice_choose=getchar();
+    getchar();
+    switch(choice_choose)
+    {
+      case'1':Input(); break;
+      case'2':Query(); break;
+      case'3':Sort(); break;
+      case'4':Putout(); break;
+      case'5':exit(0);
+      default:
+              printf("你的输入有误，请重新选择菜单。\n");
+    }
+    Menu();
+}
+
+/*************输入学生信息 *************/
+ void Input()
+{ 
+  char ch;
+  if((fp=fopen("input.txt","wb"))==NULL)
+  {
+      printf("不能打开文件!");
+      exit(0);
+  } 
+  for(n=0;n<N;n++)
+  {
+     printf("\n请输入第%d个学生信息:\n姓名:",n+1);
+       gets(student[n].name);
+     printf("学号:");
+       gets(student[n].num);
+     printf("年龄:");
+       gets(student[n].age);
+     printf("性别:");
+       gets(student[n].sex);
+     printf("C语言成绩:");
+       gets(student[n].C);
+     printf("计算机网络成绩:");
+       gets(student[n].M);
+     printf("英语成绩:");
+       gets(student[n].E);
+     printf("LINUX成绩:");
+       gets(student[n].S);   
+     fwrite(&student[n],sizeof(student[n]),1,fp); /*写入输入文件*/
+           
+     printf("是否继续输入 (y/n？)\n");
+     ch=getchar();
+     getchar();    
+     if(ch=='n')
+     {
+        break;
+     }
+   }
+     fclose(fp);
+}
+
+/***************查询**************/
+ void Query()
+ {
+    char ch, * numstr;
+    int i;
+    numstr=(char *)malloc(20*sizeof(char));
+    if((fp=fopen("input.txt","rb"))==NULL)
+    {
+        printf("打开文件失败!\n ");
+        exit(0);
+    }
+    printf("请选择一种查询方式：");
+    printf("1.姓名 2.学号 \n");
+    ch=getchar();
+    getchar();
+    switch(ch)
+    {
+     case '1':
+              printf(" 输入你所要查找的姓名:");
+              gets(numstr);
+              for(i=0;i<=n;i++)
+              {
+                  if(!strcmp(numstr,student[i].name))
+                  {
+                      break;
+                      free (numstr);
+                  }
+              }
+              break;
+    case '2':
+             printf("输入要查找的学号：");
+             gets(numstr);
+             for(i=0;i<=n;i++)
+             {
+                if(!strcmp(numstr,student[i].num))
+                {
+                     break;
+                     free (numstr);
+                }
+             }
+             break;
+    }
+    fp_output=fopen("Query.txt","wb");
+    fwrite(&student[i],sizeof(student[n]),1,fp_output);/*下次查询，会覆盖原数据*/
+    printf("查找结果如下：\n \n");
+    printf("-姓名           学号         年龄 性别 C语言 网络 英语 LINUX\n");
+    printf("%-15s%-15s%-5s%-5s%-5s%-5s%-5s%-4s\n",student[i].name,student[i].num,student[i].age,student[i].sex,student[i].C,student[i].M,student[i].E,student[i].S);
+    fclose(fp_output);
+    fclose(fp);
+ }
+
+  /***********排序***********/
+ void Sort()
+ { 
+   char ch;
+   int i,j,temp0,temp1;
+   struct stud_type *p_temp;
+   p_temp=(struct stud_type *)malloc(1*sizeof(struct stud_type));
+  
+   if((fp=fopen("input.txt","rb+"))==NULL)
+   {
+       printf("不能打开文件！");
+       exit(0);
+   }
+   printf("选择排序项目: ");
+   printf("1.学号  2.总分   3.姓名\n");    /*冒泡排序*/
+   ch=getchar();
+   getchar();
+   switch(ch)
+   {
+     case '1': 
+              for(i=0;i<n+1;i++)
+              { 
+                  for(j=1;j<n+1-i;j++)
+                  {
+                     if(strcmp(student[j-1].num,student[j].num)>0)
+                     {
+                        *p_temp=student[j];
+                        student[j]=student[j-1];
+                        student[j-1]=*p_temp;
+                     }
+                  }
+              }
+              break;
+    case '2':
+
+                for(i=0;i<n+1;i++)
+             {
+                for(j=1;j<n+1-i;j++)
+                {
+                    temp0=atoi(student[j-1].C)+atoi(student[j-1].M)+atoi(student[j-1].E)+atoi(student[j-1].S);
+                    temp1=atoi(student[j].C)+atoi(student[j].M)+atoi(student[j].E)+atoi(student[j].S);
+                    if(temp0<temp1)
+                    {
+                         *p_temp=student[j];
+                         student[j]=student[j-1];
+                         student[j-1]=*p_temp;
+                    }
+                }
+             }
+             break;
+    case '3':
+             for(i=0;i<n+1;i++)
+             {
+                 for(j=1;j<n+1-i;j++)
+                 {
+                    if(strcmp(student[j-1].name,student[j].name)>0)
+                    {
+                        *p_temp=student[j];
+                        student[j]=student[j-1];
+                        student[j-1]=*p_temp;
+                    }
+                 }
+             }
+             break;
+   }
+   printf("\n排序结果：\n\n");
+   printf("-姓名         学号        年龄   性别   C语言  网络    英语   网络系统\n");
+   fp_sert=fopen("serted.txt","wb");
+   for(i=0;i<=n;i++)
+   {
+       printf("%-11s  %-11s  %-5s %-5s    %-8s%  -8s%  -8s%-8s\n",student[i].name,student[i].num,student[i].age,student[i].sex,student[i].C,student[i].M,student[i].E,student[i].S);
+       fwrite(&student[i],sizeof(student[0]),1,fp_sert);
+   }
+   fclose(fp);
+   fclose(fp_sert);
+   free(p_temp);
+}
+
+void Putout()
+ {  
+     int i;
+/*输出输入的文件*/ 
+     fp=fopen("input.txt","rb");
+     printf("input输入文件：\n");
+     for(i=0;i<n+1;i++)
+     {  
+        fread(&student[i],sizeof(student[0]),1,fp);
+         printf("%-15s%-11s%-3s%-3s%-3s%-3s%-3s%-3s\n",student[i].name,student[i].num,student[i].age,student[i].sex,student[i].C,student[i].M,student[i].E,student[i].S);
+     }
+     printf("\n\n");
+ /*输出查询的文件*/
+     fp_output=fopen("query.txt","rb");
+     printf("\nquery查询文件:\n");
+     while(!feof(fp_output))
+     {
+        printf("%c",fgetc(fp_output));
+     }
+     printf("\n\n");
+ /*输出已排序的文件*/
+     fp_sert=fopen("serted.txt","rb");
+     printf("\nserted排序文件:\n");
+     for(i=0;i<n+1;i++)
+     {
+         fread(&student[i],sizeof(student[0]),1,fp_sert);
+         printf("\n%-15s%-11s%-3s%-3s%-3s%-3s%-3s%-3s\n",student[i].name,student[i].num,student[i].age,student[i].sex,student[i].C,student[i].M,student[i].E,student[i].S);
+     }
+      printf("\n\n");
+  
+     fclose(fp);
+     fclose(fp_sert);
+     fclose(fp_output);
+ }
+
+
+ 

@@ -1,0 +1,13 @@
+1 aaa 0 98 A 4
+2 bbb 0 42 E 12
+3 ccc 1 98 A 4
+4 ddd 0 86 B 8
+5 eee 1 75 C 11
+7 rrr 0 91 A 7
+8 qqq 0 86 B 8
+10 mmm 1 86 B 8
+11 kkk 0 98 A 4
+12 ttt 0 42 E 12
+13 qqq 1 100 A 1
+14 dzh 0 100 A 1
+15 pp 0 100 A 1
