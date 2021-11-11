@@ -26,7 +26,7 @@ void SeqLIstCheckCacpcity(SL* ps)
 //³õÊ¼»¯
 void SeqListInit(SL* ps)
 {
-	ps->a = NULL;
+	ps->a ;
 	ps->size = 0;
 	ps->cacpcity = 0;
 }
