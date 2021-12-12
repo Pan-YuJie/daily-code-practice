@@ -1,0 +1,7 @@
+﻿  源.cpp
+D:\桌面\链表学管\Project4\源.cpp(525,6): warning C4101: “tmp_n”: 未引用的局部变量
+D:\桌面\链表学管\Project4\源.cpp(526,7): warning C4101: “tmp_s”: 未引用的局部变量
+D:\桌面\链表学管\Project4\源.cpp(454): warning C4715: “Find_sno”: 不是所有的控件路径都返回值
+D:\桌面\链表学管\Project4\源.cpp(566): warning C4715: “Modify”: 不是所有的控件路径都返回值
+D:\桌面\链表学管\Project4\源.cpp(477): warning C4715: “Find_sname”: 不是所有的控件路径都返回值
+  Project4.vcxproj -> D:\桌面\链表学管\Debug\Project4.exe
