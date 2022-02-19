@@ -1,5 +1,4 @@
 package panyujie.practice.work1.five;
-
 import java.util.Scanner;
 
 /**
@@ -29,7 +28,7 @@ public class Test {
 
         //求n个Circle , new n 个 对象
         Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();;
+        int n=sc.nextInt();
 
         double sum=0;
 
@@ -102,10 +101,12 @@ class Shape{
     }
 
     public  double computerArea(){
-
         return this.area;
     }
 
+    public double computerAllArea(){
+        return 1;
+    }
 
 }
 

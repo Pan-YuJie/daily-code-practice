@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41090dbc-c8d4-4d62-83fb-bfe54cc65049" name="Changes" comment="" />
+    <list default="true" id="41090dbc-c8d4-4d62-83fb-bfe54cc65049" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../JAVA 平时 coding/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JAVA 平时 coding/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/研B JAVA 练习/panyujie/practice/work1/five/Circle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/研B JAVA 练习/panyujie/practice/work1/five/Circle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/研B JAVA 练习/panyujie/practice/work1/five/Ladder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/研B JAVA 练习/panyujie/practice/work1/five/Ladder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/研B JAVA 练习/panyujie/practice/work1/five/Rectangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/研B JAVA 练习/panyujie/practice/work1/five/Rectangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/研B JAVA 练习/panyujie/practice/work1/five/Shape.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/研B JAVA 练习/panyujie/practice/work1/five/Shape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/研B JAVA 练习/panyujie/practice/work1/five/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/研B JAVA 练习/panyujie/practice/work1/five/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/研B JAVA 练习/panyujie/practice/work1/five/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/研B JAVA 练习/panyujie/practice/work1/five/Triangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panyujie/practice/work1/five/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/panyujie/practice/work1/five/Test.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +31,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -28,6 +41,7 @@
     <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="25Dv4UAyFEmvqt237APNavjTJhG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -35,6 +49,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Java" />
   </component>
   <component name="RunManager" selected="Application.Test (4)">
