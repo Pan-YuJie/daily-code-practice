@@ -18,21 +18,26 @@ struct Node
 	Node* next;
 };
 
-Node* CreateLinkedlist(Node*, int n, void(*ptr)(Node*, FILE*), FILE*);//建立链表函数指针 
-void Write_studentFromstdin(Node*, FILE*);//键盘输入到文件，并建立链表 
-void Read_studentFromfile(Node*, FILE*);//读文件并建立链表 
+Node* CreateLinkedlist(Node*, int n, void(*ptr)(Node*, FILE*), FILE*);//建立链表通用函数指针 
+void Write_studentFromstdin(Node*, FILE*);//键盘输入到文件并建立链表 
+void Read_studentFromfile(Node*, FILE*);//读文件并建立链表
+void Read_studentFromlist(Node*, FILE*);//链表写入文件 
 void input_student(Node*);
 
 int CountFile_members(int(*ptr)(FILE*), FILE*);//通用计算文件数量函数指针
 int StuFile_members(FILE*);//计算学生类型数据数量 
 
 void Swap_StuNode(Node*, Node*);//交换数据域函数
-void SortList(void(*ptr)(Node*,Node*),Node*);//排序函数通用指针
-void Quicksort_Stunum(Node*, Node*);//按学号排序
-void Quicksort_Stuname(Node* low, Node* high);//按名字排序
-void Quicksort_Stuage(Node* low, Node* high);//按年龄排序
 
-void Traverse(void(*ptr)(Node*), Node* phead);
+void SortList(void(*ptr)(Node*, Node*), Node*);//快速排序函数通用指针
+void Quicksort_Stunum(Node*, Node*);//按学号排序
+void Quicksort_Stuname(Node*, Node*);//按名字排序
+void Quicksort_Stuage(Node*, Node*);//按年龄排序
+
+//void DeleteList(int(*ptr)(Node*,int),int); //删除学生 
+int DeletestuBysno(Node*, int);
+
+void Traverse(void(*ptr)(Node*), Node*);
 void Printf_Student(Node*);
 void DestroyList(Node*& phead);
 
@@ -60,9 +65,10 @@ int main()
 		printf("\n\t\t    (2) 计算学生个数\n");
 		printf("\n\t\t    (3) 报表输出\n");
 		printf("\n\t\t    (4) 排序\n");//学号，姓名，年龄
+		printf("\n\t\t    (5) 删除学生信息\n");
 		printf("\n\t\t    (0) 退出\n");
 		printf("\n\t*****************************************\n\n");
-		printf("请输入指令（0~4）:");
+		printf("请输入指令（0~5）:");
 		scanf("%d", &option);
 
 		switch (option)
@@ -113,14 +119,48 @@ int main()
 			{
 				SortList(Quicksort_Stuname, phead);
 			}
-			
+
 			else if (op == 3)
 			{
 				SortList(Quicksort_Stuage, phead);
 			}
 
 			Traverse(Printf_Student, phead);
+
 			fclose(fp);
+			break;
+		}
+
+		case 5: {
+
+			int tmp_sno = 0;
+			printf("请输入需要删除学生的学号:> ");
+			scanf("%d", &tmp_sno);
+
+			int flag = DeletestuBysno(phead, tmp_sno);
+
+			if (flag == 0) {
+				printf("删除失败(不存在)\n");
+			}
+			else {
+				printf("删除成功\n");
+				fp = fopen("student.dat", "w");
+				Read_studentFromlist(phead, fp);
+
+				//				n = CountFile_members(StuFile_members, fp);
+				//				rewind(fp);
+				//				printf("%d\n",n);
+
+				fp = fopen("student.dat", "rb");
+				printf("1");
+				phead = NULL;
+				printf("2");
+				phead = CreateLinkedlist(phead, n, Read_studentFromfile, fp);
+				printf("3");
+				Traverse(Printf_Student, phead);
+				printf("4");
+			}
+
 			break;
 		}
 
@@ -172,6 +212,15 @@ void Write_studentFromstdin(Node* pnew, FILE* fp)
 
 }
 
+void Read_studentFromlist(Node* phead, FILE* fp) {
+	Node* cur = phead;
+	while (cur) {
+		fwrite(cur->data, sizeof(Student), 1, fp);
+		cur = cur->next;
+		printf("1");
+	}
+}
+
 
 Node* CreateLinkedlist(Node* phead, int n, void(*ptr)(Node*, FILE*), FILE* fp)
 {
@@ -210,7 +259,6 @@ void Traverse(void(*ptr)(Node*), Node* phead)
 		ptr(p);
 		p = p->next;
 	}
-
 }
 
 
@@ -246,8 +294,41 @@ void DestroyList(Node*& phead)
 	phead = NULL;
 }
 
+int DeletestuBysno(Node* phead, int findSno)
+{
+	if (phead == NULL) return 0;
+
+	Node* tail = phead;
+	Node* prev = phead;
+
+	while (tail) {
+		if (((Student*)tail->data)->num == findSno) {
+			if (phead == tail) {
+				phead = phead->next;
+				free(phead->data);
+				free(phead);
+				return 1;
+			}
+			else {
+				prev->next = tail->next;
+				free(tail->data);
+				free(tail);
+				return 1;
+			}
+
+		}
+
+		prev = tail;
+		tail = tail->next;
+	}
+
+	return 0;
+
+}
+
+
 //快排入口
-void SortList(void(*ptr)(Node*, Node*),Node* phead)
+void SortList(void(*ptr)(Node*, Node*), Node* phead)
 {
 	Node* cur = phead;
 	while (cur->next)
@@ -333,7 +414,7 @@ void Quicksort_Stuname(Node* low, Node* high)//名字排序
 
 	while (j != high->next)
 	{
-		if (strcmp(pivot, ((Student*)j->data)->name)>0)
+		if (strcmp(pivot, ((Student*)j->data)->name) > 0)
 		{
 			Swap_StuNode(i, j);
 
@@ -347,7 +428,7 @@ void Quicksort_Stuname(Node* low, Node* high)//名字排序
 	Swap_StuNode(low, i_pre);
 	Quicksort_Stuname(low, i_pre);
 	Quicksort_Stuname(i, high);
-	
+
 }
 
 
@@ -359,3 +440,6 @@ void Swap_StuNode(Node* i, Node* j)
 	j->data = tmp;
 
 }
+
+
+
